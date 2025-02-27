@@ -1,8 +1,9 @@
 import pygame
 from personaje import Cubo
 from enemigo import Enemigo
-import random
 from bala import Bala
+import random
+
 
 pygame.init()
 
@@ -21,10 +22,15 @@ tiempo_entre_enemigos = 500
 cubo = Cubo(ANCHO/2, ALTO-75)
 enemigos = []
 balas = []
+ultima_bala = 0 
+tiempo_entre_balas = 100
 enemigos.append(Enemigo(ANCHO/2,100))
 
 def crear_bala():
-    balas.append(Bala(cubo.rect.centerx,cubo.rect.centery))
+    global ultima_bala
+    if pygame.time.get_ticks() - ultima_bala > tiempo_entre_balas:
+        balas.append(Bala(cubo.rect.centerx,cubo.rect.centery))
+        ultima_bala = pygame.time.get_ticks()
 
 def gestionar_teclas(teclas):
     # if teclas[pygame.K_w]:
@@ -67,18 +73,30 @@ while jugando and  vida > 0:
             vida -= 1
             print(f"te quedan {vida} vidas")
             enemigos.remove(enemigo)
-        if enemigo.y + enemigo.alto > ALTO:
+        if enemigo.y > ALTO:
             puntos +=1
             enemigos.remove(enemigo)
         for bala in balas:
-            bala.dibujar(VENTANA)
-            bala.movimiento ()
+            if pygame.Rect.colliderect(bala.rect, enemigo.rect):
+                enemigo.vida -= 1
+                balas.remove(bala)
+                puntos += 1 
+        if enemigo.vida <= 0:
+            enemigos.remove(enemigo)
+
+
+    for bala in balas:
+         bala.dibujar(VENTANA)
+         bala.movimiento()
 
 
     VENTANA.blit(texto_vida, (20,20))
     VENTANA.blit(texto_puntos, (20,50))
 
     pygame.display.update()
-
+pygame.quit()
+nombre = input("introduce tu nombre: ")
+with open('puntuaciones.txt', 'a') as archivo:
+    archivo.write(f"{nombre}- {puntos}\n")
 
 quit()
