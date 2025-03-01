@@ -3,15 +3,20 @@ from personaje import Cubo
 from enemigo import Enemigo
 from bala import Bala
 import random
+import time
 
 
 pygame.init()
+pygame.mixer.init()
 
 ANCHO = 1000
 ALTO = 800
 VENTANA = pygame.display.set_mode([ANCHO, ALTO])
 FPS = 60
 FUENTE = pygame.font.SysFont("Comic Sans", 40)
+SONIDO_DISPARO = pygame.mixer.Sound('media/laser2.mp3')
+SONIDO_MUERTE_ENEMIGO = pygame.mixer.Sound('media/enemy_destroy.mp3')
+SONIDO_FIN = pygame.mixer.Sound('media/nave_destroy.mp3')
 
 jugando = True
 reloj = pygame.time.Clock()
@@ -31,6 +36,7 @@ def crear_bala():
     if pygame.time.get_ticks() - ultima_bala > tiempo_entre_balas:
         balas.append(Bala(cubo.rect.centerx,cubo.rect.centery))
         ultima_bala = pygame.time.get_ticks()
+        SONIDO_DISPARO.play()
 
 def gestionar_teclas(teclas):
     # if teclas[pygame.K_w]:
@@ -83,6 +89,7 @@ while jugando and  vida > 0:
                 puntos += 1 
         if enemigo.vida <= 0:
             enemigos.remove(enemigo)
+            SONIDO_MUERTE_ENEMIGO.play()
 
 
     for bala in balas:
@@ -94,6 +101,8 @@ while jugando and  vida > 0:
     VENTANA.blit(texto_puntos, (20,50))
 
     pygame.display.update()
+SONIDO_FIN.play()
+time.sleep(0.3)
 pygame.quit()
 nombre = input("introduce tu nombre: ")
 with open('puntuaciones.txt', 'a') as archivo:

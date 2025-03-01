@@ -9,7 +9,7 @@ class Cubo:
         self.velocidad = 10
         self.color = "red"
         self.rect = pygame.Rect(self.x, self.y, self.ancho, self.alto)
-        self.imagen = pygame.image.load("media/nave.jpg")
+        self.imagen = pygame.image.load("media/nave.svg")
         self.imagen = pygame.transform.scale(self.imagen, (self.ancho, self.alto))
 
     def dibujar (self, ventana):

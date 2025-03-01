@@ -1,3 +1,12 @@
  natalia- 13
 & C:/Users/nata/AppData/Local/Microsoft/WindowsApps/python3.11.exe c:/Users/nata/Documents/pyGame/pyGame1.py- 121
 & C:/Users/nata/AppData/Local/Microsoft/WindowsApps/python3.11.exe c:/Users/nata/Documents/pyGame/pyGame1.py- 73
+& C:/Users/nata/AppData/Local/Microsoft/WindowsApps/python3.11.exe c:/Users/nata/Documents/pyGame/pyGame1.py- 73
+& C:/Users/nata/AppData/Local/Microsoft/WindowsApps/python3.11.exe c:/Users/nata/Documents/pyGame/pyGame1.py- 19
+& C:/Users/nata/AppData/Local/Microsoft/WindowsApps/python3.11.exe c:/Users/nata/Documents/pyGame/pyGame1.py- 50
+& C:/Users/nata/AppData/Local/Microsoft/WindowsApps/python3.11.exe c:/Users/nata/Documents/pyGame/pyGame1.py- 139
+& C:/Users/nata/AppData/Local/Microsoft/WindowsApps/python3.11.exe c:/Users/nata/Documents/pyGame/pyGame1.py- 72
+& C:/Users/nata/AppData/Local/Microsoft/WindowsApps/python3.11.exe c:/Users/nata/Documents/pyGame/pyGame1.py- 29
+& C:/Users/nata/AppData/Local/Microsoft/WindowsApps/python3.11.exe c:/Users/nata/Documents/pyGame/pyGame1.py- 47
+& C:/Users/nata/AppData/Local/Microsoft/WindowsApps/python3.11.exe c:/Users/nata/Documents/pyGame/pyGame1.py- 95
+natalia- 22
