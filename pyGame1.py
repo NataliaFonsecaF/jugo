@@ -2,6 +2,7 @@ import pygame
 from personaje import Cubo
 from enemigo import Enemigo
 from bala import Bala
+from item import Item
 import random
 import time
 
@@ -27,6 +28,9 @@ tiempo_entre_enemigos = 500
 cubo = Cubo(ANCHO/2, ALTO-75)
 enemigos = []
 balas = []
+items = []
+tiempo_entre_items = 15000
+tiempo_pasado_2 = 0
 ultima_bala = 0 
 tiempo_entre_balas = 100
 enemigos.append(Enemigo(ANCHO/2,100))
@@ -54,15 +58,23 @@ def gestionar_teclas(teclas):
 while jugando and  vida > 0:
 
     tiempo_pasado += reloj.tick(FPS)
+    tiempo_pasado_2 += reloj.tick(FPS)
     if tiempo_pasado > tiempo_entre_enemigos:
         enemigos.append(Enemigo(random.randint(0, ANCHO),-100))
         tiempo_pasado = 0 
+
+    if tiempo_pasado_2 > tiempo_entre_items:
+        items.append(Item(random.randint(0, ANCHO),-100)) 
+        tiempo_pasado_2 = 0 
+
+
    
     eventos = pygame.event.get()
     teclas = pygame.key.get_pressed()
     texto_vida = FUENTE.render(f"Vida: {vida}", True, "white")
     texto_puntos = FUENTE.render(f"puntos: {puntos}", True, "white")
     gestionar_teclas(teclas)
+    
 
     for evento in eventos: 
         if evento.type == pygame.QUIT:
@@ -95,6 +107,21 @@ while jugando and  vida > 0:
     for bala in balas:
          bala.dibujar(VENTANA)
          bala.movimiento()
+         if bala.y < 0:
+             balas.remove(bala)
+
+    for item in items: 
+        item.dibujar(VENTANA)
+        item.movimiento()
+        if pygame.Rect.colliderect(item.rect, cubo.rect):
+            items.remove(item)
+            if item.tipo ==1:
+                if tiempo_entre_balas > 200:
+                    tiempo_entre_balas /=2
+            elif item.tipo == 2:
+                cubo.velocidad *=2
+        if item.y > ALTO:
+            items.remove(item)
 
 
     VENTANA.blit(texto_vida, (20,20))
