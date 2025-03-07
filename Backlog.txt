@@ -1,0 +1,24 @@
+Tareas, Porcentaje
+
+depurar codigo,
+separar constantes variables y metodos,
+dar estructura a carpetas de proyecto,
+balas desde el centro,
+crear boss's,
+
+imagen fondo,
+imagenes items,
+valida si se pueden remplazar naves y enemigos con gifts,
+
+pantalla de inicio,
+pantalla endGame puntos,
+pantalla de puntajes top,
+pantalla de ajuste(nivel de sonido),
+pantalla de pariencias (enemigos, nave y balas),
+
+
+
+
+
+
+

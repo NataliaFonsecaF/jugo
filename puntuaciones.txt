@@ -19,3 +19,8 @@ natalia- 22
 & C:/Users/nata/AppData/Local/Microsoft/WindowsApps/python3.11.exe c:/Users/nata/Documents/pyGame/pyGame1.py- 140
 & C:/Users/nata/AppData/Local/Microsoft/WindowsApps/python3.11.exe c:/Users/nata/Documents/pyGame/pyGame1.py- 25
 - 67
+ natalia- 794
+& C:/Users/nata/AppData/Local/Microsoft/WindowsApps/python3.11.exe c:/Users/nata/Documents/pyGame/pyGame1.py- 8
+& C:/Users/nata/AppData/Local/Microsoft/WindowsApps/python3.11.exe c:/Users/nata/Documents/pyGame/pyGame1.py- 19
+& C:/Users/nata/AppData/Local/Microsoft/WindowsApps/python3.11.exe c:/Users/nata/Documents/pyGame/pyGame1.py- 18
+natalia- 62

@@ -24,7 +24,8 @@ reloj = pygame.time.Clock()
 vida =5
 puntos = 0
 tiempo_pasado = 0
-tiempo_entre_enemigos = 500
+tiempo_entre_enemigos = 500  
+tiempo_entre_enemigos_base = 1000
 cubo = Cubo(ANCHO/2, ALTO-75)
 enemigos = []
 balas = []
@@ -46,11 +47,13 @@ def gestionar_teclas(teclas):
     # if teclas[pygame.K_w]:
         # cubo.y -= cubo.velocidad
     if teclas[pygame.K_a]:
-        cubo.x -= cubo.velocidad
+        if cubo.x >= 0:
+            cubo.x -= cubo.velocidad
     # if teclas[pygame.K_s]:
     #     cubo.y += cubo.velocidad
     if teclas[pygame.K_d]:
-        cubo.x += cubo.velocidad
+        if cubo.x + cubo.ancho <= ANCHO:
+            cubo.x += cubo.velocidad
     if teclas[pygame.K_SPACE]:
         crear_bala()
 
@@ -62,6 +65,9 @@ while jugando and  vida > 0:
     if tiempo_pasado > tiempo_entre_enemigos:
         enemigos.append(Enemigo(random.randint(0, ANCHO),-100))
         tiempo_pasado = 0 
+        tiempo_entre_enemigos = random.randint(50, tiempo_entre_enemigos_base)
+        if tiempo_entre_enemigos_base > 80:
+            tiempo_entre_enemigos_base -= 20
 
     if tiempo_pasado_2 > tiempo_entre_items:
         items.append(Item(random.randint(0, ANCHO),-100)) 
@@ -98,9 +104,10 @@ while jugando and  vida > 0:
             if pygame.Rect.colliderect(bala.rect, enemigo.rect):
                 enemigo.vida -= 1
                 balas.remove(bala)
-                puntos += 1 
+                
         if enemigo.vida <= 0:
             enemigos.remove(enemigo)
+            puntos += 5
             SONIDO_MUERTE_ENEMIGO.play()
 
 
@@ -125,7 +132,7 @@ while jugando and  vida > 0:
 
 
     VENTANA.blit(texto_vida, (20,20))
-    VENTANA.blit(texto_puntos, (20,50))
+    VENTANA.blit(texto_puntos, (20,70))
 
     pygame.display.update()
 SONIDO_FIN.play()
